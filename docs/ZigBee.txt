@@ -1,0 +1,30 @@
+PC机
+  有串口数据处理模块、Socket客户端、显示模块、控制模块；集成在一个Winform窗体应用程序中；
+  所有模块共用串口变量currentSerial和Socket变量currentSocket
+  
+  串口数据处理模块
+    使用C#的SerialPort类操作串口，发送控制命令直接调用Send函数，读取温度数据通过订阅SerialDataReceivedEventHandler事件使用Read函数读取
+    接收到温度数据之后，通过Socket变量将温度数据发送到Socket服务器；
+
+  Socket客户端
+    使用C#的Socket类实现网络通信，发送数据直接使用Send函数，接收服务器的数据需要开启一个线程循环使用Receive读取控制风扇命令；
+    接收到控制命令之后通过串口变量将命令发送到串口，并改变控制模块的控制按钮状态；
+  
+  显示模块
+    串口数据处理模块读取到数据时候，调用本模块提供的接口将温度信息显示在程序首页上；
+  
+  控制模块
+    点击相应控制按钮(开风扇/关风扇)之后，通过串口变量将控制风扇的命令发送到串口，通过Socket变量将控制后的风扇状态发送到Socket服务器；
+
+服务器
+  有Http服务器、Socket服务器、温度存储模块，模块之间共用Socket变量currentSocket、温度变量temp和风扇状态变量fan_state；
+  Http服务器
+    使用C#的HttpListener类实现一个简单的Http服务器；使用GetContext函数接收客户端的连接，并创造一个Http上下文，使用http上下文的Request属性获取请求信息，通过http上下文的Response属性设置响应信息，然后通过Response属性的OutputStream属性的Write方法返回响应内容。
+    返回客户端请求的温度数据和风扇数据；接收开关风扇请求，调用Socket变量将风扇控制命令发送到Socket客户端；并更新变量fan_state；
+  
+  Socket服务器
+    使用Socket类开启一个监听的Socket，监听到客户端的连接之后会关闭当前的Socket连接并创建一个新的通信Socket开启多线程去接收客户端发送的温度数据和风扇状态信息；
+  
+  温度存储
+    以对象的方式访问xml文件，每个5秒钟将不为空的温度temp变量写入xml中；
+    xml文件以小时分割存放在以日志分割的温度记录文件夹中；
