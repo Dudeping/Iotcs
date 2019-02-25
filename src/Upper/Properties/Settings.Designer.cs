@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UpperDemo.Properties
+namespace Iotcs.Upper.Properties
 {
 
 

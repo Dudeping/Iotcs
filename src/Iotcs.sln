@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Upper", "Upper\Upper.csproj", "{5C463949-D0FB-4133-A149-14A698656797}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iotcs.Upper", "Upper\Iotcs.Upper.csproj", "{5C463949-D0FB-4133-A149-14A698656797}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{47525D4A-5293-427A-9206-9AB402C7BD4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iotcs.Server", "Server\Iotcs.Server.csproj", "{47525D4A-5293-427A-9206-9AB402C7BD4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IXmlDB", "IXmlDB\IXmlDB.csproj", "{52498DEC-2160-4C5C-92A7-C5C9F52D7819}"
 EndProject
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30129E89-9BCC-49DE-81BC-04FCA71ECCA4}
 	EndGlobalSection
 EndGlobal

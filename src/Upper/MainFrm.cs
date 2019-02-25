@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UpperDemo
+namespace Iotcs.Upper
 {
     public partial class MainFrm : Form
     {

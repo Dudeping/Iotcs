@@ -1,4 +1,4 @@
-﻿namespace UpperDemo
+﻿namespace Iotcs.Upper
 {
     partial class MainFrm
     {
